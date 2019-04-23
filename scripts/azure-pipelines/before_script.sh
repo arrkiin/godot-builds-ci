@@ -12,8 +12,7 @@ brew install bash scons yasm
 echo "$(brew --prefix)/bin/bash" | sudo tee -a /etc/shells
 sudo chsh -s "$(brew --prefix)/bin/bash"
 "$(brew --prefix)/bin/bash" -c "cd $PWD"
-git clone --depth=1 "$GODOT_REPO_URL"
-git checkout "$GODOT_REPO_BRANCH"
+git clone --depth=1 --branch "$GODOT_REPO_BRANCH" "$GODOT_REPO_URL"
 mkdir -p \
     "$BUILD_ARTIFACTSTAGINGDIRECTORY/editor" \
     "$BUILD_ARTIFACTSTAGINGDIRECTORY/templates"
