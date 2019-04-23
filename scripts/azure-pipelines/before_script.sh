@@ -17,6 +17,12 @@ mkdir -p \
     "$BUILD_ARTIFACTSTAGINGDIRECTORY/editor" \
     "$BUILD_ARTIFACTSTAGINGDIRECTORY/templates"
 
+# Prepare submodules for integration
+for module_dir in $(ls staging)
+do
+    cp -r staging/$module_dir/$module_dir modules
+done
+
 # Copy user-supplied modules into the Godot directory
 # (don't fail in case no modules are present)
 cp "modules"/* "godot/modules/" || true
