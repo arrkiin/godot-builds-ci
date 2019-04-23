@@ -30,7 +30,7 @@ curl -LO http://dl.google.com/googleadmobadssdk/googlemobileadssdkios.zip
 unzip googlemobileadssdkios.zip
 for sdk_dir in GoogleMobileAdsSdkiOS*/ ; do
     for lib_dir in ./$sdk_dir/*.framework; do
-        cp -r $lib_dir modules/admob/ios/lib
+        cp -r $lib_dir ../modules/admob/ios/lib
     done
 done
 cd ..
