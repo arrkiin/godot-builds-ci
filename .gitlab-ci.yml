@@ -32,7 +32,9 @@ variables:
   # SCons build flags to use for all platforms
   SCONS_FLAGS: '("debug_symbols=no" "progress=no" "-j$BUILD_THREADS")'
   # The Godot Git repository clone URL
-  GODOT_REPO_URL: https://github.com/godotengine/godot.git
+  GODOT_REPO_URL: https://github.com/arrkiin/godot.git
+  # The Branch to use for the build
+  GODOT_REPO_BRANCH: module_build
   # Tell gitlab to handle submodules
   GIT_SUBMODULE_STRATEGY: recursive
 

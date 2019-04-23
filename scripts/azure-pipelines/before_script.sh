@@ -13,6 +13,7 @@ echo "$(brew --prefix)/bin/bash" | sudo tee -a /etc/shells
 sudo chsh -s "$(brew --prefix)/bin/bash"
 "$(brew --prefix)/bin/bash" -c "cd $PWD"
 git clone --depth=1 "$GODOT_REPO_URL"
+git checkout "$GODOT_REPO_BRANCH"
 mkdir -p \
     "$BUILD_ARTIFACTSTAGINGDIRECTORY/editor" \
     "$BUILD_ARTIFACTSTAGINGDIRECTORY/templates"
@@ -22,6 +23,18 @@ for module_dir in $(ls staging)
 do
     cp -r staging/$module_dir/$module_dir modules
 done
+
+# Provide Admob iOS sdk
+mkdir -p tmp
+cd tmp
+curl -LO http://dl.google.com/googleadmobadssdk/googlemobileadssdkios.zip
+unzip googlemobileadssdkios.zip
+for sdk_dir in GoogleMobileAdsSdkiOS*/ ; do
+    for lib_dir in ./$sdk_dir/*.framework; do
+        cp -r $lib_dir modules/admob/ios/lib
+    done
+done
+cd ..
 
 # Copy user-supplied modules into the Godot directory
 # (don't fail in case no modules are present)

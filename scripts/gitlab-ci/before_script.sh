@@ -35,6 +35,7 @@ else
 fi
 
 git clone --depth=1 "$GODOT_REPO_URL"
+git checkout "$GODOT_REPO_BRANCH"
 mkdir -p "$ARTIFACTS_DIR/"{editor,server,templates}/
 
 # Prepare submodules for integration
