@@ -34,7 +34,7 @@ variables:
   # The Godot Git repository clone URL
   GODOT_REPO_URL: https://github.com/arrkiin/godot.git
   # The Branch to use for the build
-  GODOT_REPO_BRANCH: module_build
+  GODOT_REPO_BRANCH: appcenter
   # Tell gitlab to handle submodules
   GIT_SUBMODULE_STRATEGY: recursive
 
