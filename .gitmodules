@@ -7,3 +7,6 @@
 [submodule "staging/vibration"]
 	path = staging/vibration
 	url = https://github.com/arrkiin/Godot-Mobile-Vibration
+[submodule "staging/appcenter"]
+	path = staging/appcenter
+	url = https://github.com/arrkiin/GodotAppCenter
