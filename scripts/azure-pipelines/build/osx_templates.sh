@@ -9,7 +9,7 @@ IFS=$'\n\t'
 # Build macOS export templates
 for target in "release_debug" "release"; do
   scons platform=osx tools=no target=$target \
-        "${SCONS_FLAGS[@]}"
+        "${SCONS_FLAGS[@]}" "${SCONS_TMPL_FLAGS[@]}"
 done
 
 # Create macOS export templates ZIP archive

@@ -28,7 +28,7 @@ fi
 scons platform=x11 tools=no target="$scons_target" \
         udev=yes builtin_libpng=yes use_static_cpp=yes \
         LINKFLAGS="-fuse-ld=gold" \
-        "${SCONS_FLAGS[@]}"
+        "${SCONS_FLAGS[@]}" "${SCONS_TMPL_FLAGS[@]}"
 
 strip bin/godot.x11.*.64
 

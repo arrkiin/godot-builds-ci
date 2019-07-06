@@ -12,7 +12,7 @@ IFS=$'\n\t'
 # An empty `data.pck` file must be included in the export template ZIP as well
 for target in "release_debug" "release"; do
   scons platform=iphone arch=arm64 tools=no target=$target \
-        "${SCONS_FLAGS[@]}"
+        "${SCONS_FLAGS[@]}" "${SCONS_TMPL_FLAGS[@]}"
 done
 
 # Create iOS export templates ZIP archive
