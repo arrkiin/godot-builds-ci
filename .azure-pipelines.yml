@@ -11,15 +11,15 @@ jobs:
       build_threads: "3"
       scons_flags: '("progress=no" "debug_symbols=no" "-j$BUILD_THREADS")'
       godot_repo_url: https://github.com/arrkiin/godot
-      godot_repo_branch: module_build
+      godot_repo_branch: appcenter
     strategy:
       matrix:
-        osx_editor:
-          platform: osx
-          target: editor
-        osx_templates:
-          platform: osx
-          target: templates
+        # osx_editor:
+        #   platform: osx
+        #   target: editor
+        # osx_templates:
+        #   platform: osx
+        #   target: templates
         ios_templates:
           platform: iphone
           target: templates
