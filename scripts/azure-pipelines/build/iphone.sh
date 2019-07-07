@@ -15,12 +15,19 @@ for target in "release_debug" "release"; do
         "${SCONS_FLAGS[@]}" "${SCONS_TMPL_FLAGS[@]}"
 done
 
+for target in "release_debug"; do
+  scons platform=iphone arch=x86_64 tools=no target=$target \
+        "${SCONS_FLAGS[@]}" "${SCONS_TMPL_FLAGS[@]}"
+done
+
 # Create iOS export templates ZIP archive
 mv "bin/libgodot.iphone.opt.debug.arm64.a" "libgodot.iphone.debug.fat.a"
 mv "bin/libgodot.iphone.opt.arm64.a" "libgodot.iphone.release.fat.a"
+mv "bin/libgodot.iphone.opt.debug.x86_64.a" "libgodot.iphone.opt.debug.simulator.a"
 touch "data.pck"
 zip -r9 \
     "$BUILD_ARTIFACTSTAGINGDIRECTORY/templates/iphone.zip" \
     "libgodot.iphone.debug.fat.a" \
     "libgodot.iphone.release.fat.a" \
+    "libgodot.iphone.opt.debug.simulator.a" \
     "data.pck"
