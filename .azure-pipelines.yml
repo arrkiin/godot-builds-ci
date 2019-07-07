@@ -23,6 +23,9 @@ jobs:
         ios_templates:
           platform: iphone
           target: templates
+        simulator_templates:
+          platform: simulator
+          target: templates
     steps:
       - script: |
           scripts/azure-pipelines/before_script.sh
@@ -36,6 +39,9 @@ jobs:
           fi
           if [[ "$PLATFORM" == "iphone" ]]; then
             ../scripts/azure-pipelines/build/iphone.sh
+          fi
+          if [[ "$PLATFORM" == "simulator" ]]; then
+            ../scripts/azure-pipelines/build/simulator.sh
           fi
       - task: PublishBuildArtifacts@1
         inputs:
