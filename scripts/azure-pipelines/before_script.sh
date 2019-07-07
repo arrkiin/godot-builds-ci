@@ -45,3 +45,5 @@ echo ""
 git -C "godot/" log --max-count 1
 printf -- "-%.0s" {0..72}
 echo ""
+
+chmod +x scripts/azure-pipelines/build/*.sh
