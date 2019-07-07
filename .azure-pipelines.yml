@@ -14,12 +14,12 @@ jobs:
       godot_repo_branch: appcenter
     strategy:
       matrix:
-        # osx_editor:
-        #   platform: osx
-        #   target: editor
-        # osx_templates:
-        #   platform: osx
-        #   target: templates
+        osx_editor:
+          platform: osx
+          target: editor
+        osx_templates:
+          platform: osx
+          target: templates
         ios_templates:
           platform: iphone
           target: templates
