@@ -35,6 +35,17 @@ for sdk_dir in GoogleMobileAdsSdkiOS*/ ; do
 done
 cd ..
 
+# Provide AppCenter iOS sdk
+cd tmp
+curl -LO https://github.com/microsoft/appcenter-sdk-apple/releases/download/2.1.0/AppCenter-SDK-Apple-2.1.0.zip
+unzip AppCenter-SDK-Apple-2.1.0.zip
+for sdk_dir in AppCenter-SDK-Apple/iOS ; do
+    for lib_dir in ./$sdk_dir/*.framework; do
+        cp -rv $lib_dir ../modules/appcenter/ios/lib
+    done
+done
+cd ..
+
 # Copy user-supplied modules into the Godot directory
 # (don't fail in case no modules are present)
 cp -rv "modules"/* "godot/modules/" || true
