@@ -11,7 +11,7 @@ jobs:
       build_threads: "3"
       scons_flags: '("progress=no" "debug_symbols=no" "-j$BUILD_THREADS")'
       godot_repo_url: https://github.com/arrkiin/godot
-      godot_repo_branch: module_build
+      godot_repo_branch: appcenter
     strategy:
       matrix:
         osx_editor:
@@ -22,6 +22,9 @@ jobs:
           target: templates
         ios_templates:
           platform: iphone
+          target: templates
+        simulator_templates:
+          platform: simulator
           target: templates
     steps:
       - script: |
@@ -36,6 +39,9 @@ jobs:
           fi
           if [[ "$PLATFORM" == "iphone" ]]; then
             ../scripts/azure-pipelines/build/iphone.sh
+          fi
+          if [[ "$PLATFORM" == "simulator" ]]; then
+            ../scripts/azure-pipelines/build/simulator.sh
           fi
       - task: PublishBuildArtifacts@1
         inputs:

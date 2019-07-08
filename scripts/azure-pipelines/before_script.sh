@@ -20,7 +20,7 @@ mkdir -p \
 # Prepare submodules for integration
 for module_dir in $(ls staging)
 do
-    cp -r staging/$module_dir/$module_dir modules
+    cp -rv staging/$module_dir/$module_dir modules
 done
 
 # Provide Admob iOS sdk
@@ -30,14 +30,14 @@ curl -LO http://dl.google.com/googleadmobadssdk/googlemobileadssdkios.zip
 unzip googlemobileadssdkios.zip
 for sdk_dir in GoogleMobileAdsSdkiOS*/ ; do
     for lib_dir in ./$sdk_dir/*.framework; do
-        cp -r $lib_dir ../modules/admob/ios/lib
+        cp -rv $lib_dir ../modules/admob/ios/lib
     done
 done
 cd ..
 
 # Copy user-supplied modules into the Godot directory
 # (don't fail in case no modules are present)
-cp -r "modules"/* "godot/modules/" || true
+cp -rv "modules"/* "godot/modules/" || true
 
 # Print information about the commit to build
 printf -- "-%.0s" {0..72}
@@ -45,3 +45,5 @@ echo ""
 git -C "godot/" log --max-count 1
 printf -- "-%.0s" {0..72}
 echo ""
+
+chmod +x scripts/azure-pipelines/build/*.sh
