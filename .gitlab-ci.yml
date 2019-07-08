@@ -72,7 +72,6 @@ build:linux_editor:
     - "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_editor.sh"
   artifacts: *artifacts
   retry: *retry
-  when: manual
 
 # Linux export templates (debug)
 # Built on Ubuntu 14.04 so that binaries run on old distributions as well
