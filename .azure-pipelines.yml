@@ -10,50 +10,47 @@ variables:
   godot_repo_branch: appcenter
 
 jobs:
-  # - job: macos
-  #   pool:
-  #     vmImage: macOS-10.13
-  #   timeoutInMinutes: 0
-  #   strategy:
-  #     matrix:
-  #       osx_editor:
-  #         platform: osx
-  #         target: editor
-  #       osx_templates:
-  #         platform: osx
-  #         target: templates
-  #       ios_templates:
-  #         platform: iphone
-  #         target: templates
-  #       simulator_templates:
-  #         platform: simulator
-  #         target: templates
-  #   steps:
-  #     - script: |
-  #         chmod +x scripts/azure-pipelines/*.sh
-  #         chmod +x scripts/azure-pipelines/build/*.sh
-  #         scripts/azure-pipelines/macos_before_script.sh
-  #         cd "godot/"
+  - job: macos
+    pool:
+      vmImage: macOS-10.13
+    timeoutInMinutes: 0
+    strategy:
+      matrix:
+        osx_editor:
+          platform: osx
+          target: editor
+        osx_templates:
+          platform: osx
+          target: templates
+        ios_templates:
+          platform: iphone
+          target: templates
+        simulator_templates:
+          platform: simulator
+          target: templates
+    steps:
+      - script: |
+          chmod +x scripts/azure-pipelines/*.sh
+          chmod +x scripts/azure-pipelines/build/*.sh
+          scripts/azure-pipelines/macos_before_script.sh
+          cd "godot/"
 
-  #         if [[ "$PLATFORM" == "osx" ]] && [[ "$TARGET" == "editor" ]]; then
-  #           ../scripts/azure-pipelines/build/osx_editor.sh
-  #         fi
-  #         if [[ "$PLATFORM" == "osx" ]] && [[ "$TARGET" == "templates" ]]; then
-  #           ../scripts/azure-pipelines/build/osx_templates.sh
-  #         fi
-  #         if [[ "$PLATFORM" == "iphone" ]]; then
-  #           ../scripts/azure-pipelines/build/iphone.sh
-  #         fi
-  #         if [[ "$PLATFORM" == "simulator" ]]; then
-  #           ../scripts/azure-pipelines/build/simulator.sh
-  #         fi
-  #         if [[ "$PLATFORM" == "windows" ]] && [[ "$TARGET" == "editor" ]]; then
-  #           ../scripts/azure-pipelines/build/windows_editor.sh
-  #         fi
-  #     - task: PublishBuildArtifacts@1
-  #       inputs:
-  #         pathtoPublish: $(Build.ArtifactStagingDirectory)
-  #         artifactName: godot
+          if [[ "$PLATFORM" == "osx" ]] && [[ "$TARGET" == "editor" ]]; then
+            ../scripts/azure-pipelines/build/osx_editor.sh
+          fi
+          if [[ "$PLATFORM" == "osx" ]] && [[ "$TARGET" == "templates" ]]; then
+            ../scripts/azure-pipelines/build/osx_templates.sh
+          fi
+          if [[ "$PLATFORM" == "iphone" ]]; then
+            ../scripts/azure-pipelines/build/iphone.sh
+          fi
+          if [[ "$PLATFORM" == "simulator" ]]; then
+            ../scripts/azure-pipelines/build/simulator.sh
+          fi
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: $(Build.ArtifactStagingDirectory)
+          artifactName: godot
 
   - job: windows
     pool:
@@ -84,18 +81,9 @@ jobs:
     timeoutInMinutes: 0
     strategy:
       matrix:
-        android_arm32_templates:
+        android_templates:
           platform: android
           target: templates
-          scons_arch: armv7
-        android_arm64_templates:
-          platform: android
-          target: templates
-          scons_arch: arm64v8
-        android_x86_templates:
-          platform: android
-          target: templates
-          scons_arch: x86
     steps:
       - bash: |
           chmod +x scripts/azure-pipelines/*.sh
@@ -112,7 +100,7 @@ jobs:
 
   - job: deploy
     dependsOn:
-    # - macos
+    - macos
     - windows
     - linux
     condition: >-

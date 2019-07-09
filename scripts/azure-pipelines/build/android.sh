@@ -11,7 +11,7 @@ export ANDROID_NDK_ROOT=$ANDROID_HOME/ndk-bundle
 # Build Android export template
 for target in "release_debug" "release"; do
   for arch in "armv7" "arm64v8" "x86"; do
-  scons platform=android tools=no target="$target" android_arch="$SCONS_ARCH" \
+  scons platform=android tools=no target="$target" android_arch="$arch" \
         "${SCONS_FLAGS[@]}" "${SCONS_TMPL_FLAGS[@]}"
   done
 done

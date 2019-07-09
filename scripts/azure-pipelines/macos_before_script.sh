@@ -23,7 +23,7 @@ do
     cp -rv staging/$module_dir/$module_dir modules
 done
 
-if [[ "$PLATFORM" == "iphone" ]]; then
+if [[ "$PLATFORM" == "iphone" ]] || [[ "$PLATFORM" == "simulator" ]]; then
 
     # Provide Admob iOS sdk
     mkdir -p tmp
