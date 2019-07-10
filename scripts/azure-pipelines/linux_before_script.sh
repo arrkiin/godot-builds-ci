@@ -21,7 +21,8 @@ sudo apt-get install -qqq git cmake zip unzip build-essential scons pkg-config \
 git clone --depth=1 --branch "$GODOT_REPO_BRANCH" "$GODOT_REPO_URL"
 mkdir -p \
     "$BUILD_ARTIFACTSTAGINGDIRECTORY/editor" \
-    "$BUILD_ARTIFACTSTAGINGDIRECTORY/templates"
+    "$BUILD_ARTIFACTSTAGINGDIRECTORY/templates" \
+    "$BUILD_ARTIFACTSTAGINGDIRECTORY/server" 
 
 # Prepare submodules for integration
 for module_dir in $(ls staging)

@@ -30,4 +30,4 @@ scons platform=javascript tools=no target="$scons_target" \
 
 # Move HTML5 export template to the artifacts directory
 mv "$GODOT_DIR/bin"/godot.javascript.*.zip \
-    "$BUILD_ARTIFACTSTAGINGDIRECTORY/templates/webassembly_$target.zip"
+    "$BUILD_ARTIFACTSTAGINGDIRECTORY/templates/webassembly_$BUILD_TARGET.zip"

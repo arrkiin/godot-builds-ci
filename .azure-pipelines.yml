@@ -92,6 +92,9 @@ jobs:
         linux_editor:
           platform: linux
           target: editor
+        linux_server:
+          platform: linux
+          target: server
         html_debug_templates:
           platform: linux
           target: html
@@ -114,6 +117,9 @@ jobs:
           fi
           if [[ "$PLATFORM" == "linux" ]] && [[ "$TARGET" == "html" ]]; then
             ../scripts/azure-pipelines/build/html5.sh
+          fi
+          if [[ "$PLATFORM" == "linux" ]] && [[ "$TARGET" == "server" ]]; then
+            ../scripts/azure-pipelines/build/linux_headless.sh
           fi
       - task: PublishBuildArtifacts@1
         inputs:
