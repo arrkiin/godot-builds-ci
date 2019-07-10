@@ -89,6 +89,17 @@ jobs:
           platform: android
           target: templates
           build_target: release
+        linux_editor:
+          platform: linux
+          target: editor
+        html_debug_templates:
+          platform: linux
+          target: html
+          build_target: debug
+        html_release_templates:
+          platform: linux
+          target: html
+          build_target: release
     steps:
       - bash: |
           chmod +x scripts/azure-pipelines/*.sh
@@ -97,6 +108,12 @@ jobs:
           cd "godot/"
           if [[ "$PLATFORM" == "android" ]]; then
             ../scripts/azure-pipelines/build/android.sh
+          fi
+          if [[ "$PLATFORM" == "linux" ]] && [[ "$TARGET" == "editor" ]]; then
+            ../scripts/azure-pipelines/build/linux_editor.sh
+          fi
+          if [[ "$PLATFORM" == "linux" ]] && [[ "$TARGET" == "html" ]]; then
+            ../scripts/azure-pipelines/build/html5.sh
           fi
       - task: PublishBuildArtifacts@1
         inputs:
