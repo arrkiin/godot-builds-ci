@@ -84,6 +84,11 @@ jobs:
         android_templates:
           platform: android
           target: templates
+          build_target: debug
+        android_templates:
+          platform: android
+          target: templates
+          build_target: release
     steps:
       - bash: |
           chmod +x scripts/azure-pipelines/*.sh
