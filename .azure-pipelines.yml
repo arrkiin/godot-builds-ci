@@ -81,11 +81,11 @@ jobs:
     timeoutInMinutes: 0
     strategy:
       matrix:
-        android_templates:
+        android_debug_templates:
           platform: android
           target: templates
           build_target: debug
-        android_templates:
+        android_release_templates:
           platform: android
           target: templates
           build_target: release
